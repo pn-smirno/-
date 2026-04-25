@@ -24,7 +24,7 @@
             <!-- 75% -->
         </Grid.ColumnDefinitions>
 
-		<!-- ЛЕВАЯ ПАНЕЛЬ: Категории (25%) -->
+		<!--  Категории (25%) -->
 		<Grid Grid.Column="0" Background="#F0F0F0" Margin="5">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto"/>
@@ -34,11 +34,11 @@
 
 			<TextBlock Text="Категории" FontWeight="Bold" FontSize="16" Margin="5" TextAlignment="Center"/>
 
-			<!-- ТОЛЬКО КНОПКА ДОБАВЛЕНИЯ (без удаления) -->
-			<Button Grid.Row="1" Content="➕ Добавить категорию" Command="{Binding AddCategoryCommand}"
+		
+			<Button Grid.Row="1" Content=" Добавить категорию" Command="{Binding AddCategoryCommand}"
 					Margin="5" Padding="5" Background="LightBlue"/>
 
-			<!-- ПРОСТОЙ СПИСОК КАТЕГОРИЙ (без крестиков удаления) -->
+			
 			<ListBox Grid.Row="2" ItemsSource="{Binding Categories}"
 					 SelectedItem="{Binding SelectedCategory}" Margin="5">
 				<ListBox.ItemTemplate>
@@ -49,7 +49,7 @@
 			</ListBox>
 		</Grid>
 
-        <!-- ПРАВАЯ ПАНЕЛЬ: Основная информация (75%) -->
+        <!--  Основная информация (75%) -->
         <Grid Grid.Column="1" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -77,9 +77,9 @@
 
             <!-- Кнопки управления товарами -->
             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
-                <Button Content="➕ Добавить товар" Command="{Binding AddProductCommand}" 
+                <Button Content=" Добавить товар" Command="{Binding AddProductCommand}" 
                         Width="150" Margin="5" Padding="5"/>
-                <Button Content="❌ Удалить товар" Command="{Binding DeleteProductCommand}" 
+                <Button Content=" Удалить товар" Command="{Binding DeleteProductCommand}" 
                         Width="150" Margin="5" Padding="5" Background="LightCoral"/>
             </StackPanel>
 
@@ -106,7 +106,7 @@
                         <TextBlock Text="Комментарий:" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
                         <TextBox Text="{Binding MovementComment}" Grid.Row="1" Grid.Column="1" Margin="5" Width="300" HorizontalAlignment="Left"/>
 
-                        <Button Content="📦 Выполнить операцию" Command="{Binding AddMovementCommand}" 
+                        <Button Content=" Выполнить операцию" Command="{Binding AddMovementCommand}" 
                                 Grid.Row="2" Grid.ColumnSpan="2" Width="200" Margin="5" Padding="5" 
                                 HorizontalAlignment="Left" Background="LightGreen"/>
                     </Grid>
