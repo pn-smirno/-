@@ -92,7 +92,7 @@ namespace WarehouseApp.ViewModels
             {
                 _selectedCategory = value;
                 OnPropertyChanged();
-                // При смене категории загружаем товары этой категории
+                
                 Task.Run(async () => await LoadProductsByCategoryAsync());
             }
         }
@@ -116,7 +116,7 @@ namespace WarehouseApp.ViewModels
             {
                 _movementQuantity = value;
                 OnPropertyChanged();
-                ((RelayCommand)AddMovementCommand).CanExecute(null); // Обновляем доступность команды
+                ((RelayCommand)AddMovementCommand).CanExecute(null); 
             }
         }
 
@@ -153,10 +153,10 @@ namespace WarehouseApp.ViewModels
         {
             try
             {
-                // Загружаем категории с товарами (включая связанные данные)
+                // Загружаем категории с товарами 
                 var categoriesFromDb = await _categoryRepo.GetAllAsync();
 
-                // Обновляем коллекцию в UI-потоке
+                
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Categories.Clear();
@@ -176,7 +176,7 @@ namespace WarehouseApp.ViewModels
 
             try
             {
-                // Используем FindAsync с фильтром по категории
+                //  FindAsync с фильтром по категории
                 var productsFromDb = await _productRepo.FindAsync(p => p.CategoryId == SelectedCategory.Id);
 
                 Application.Current.Dispatcher.Invoke(() =>
@@ -305,8 +305,8 @@ namespace WarehouseApp.ViewModels
                 return;
             }
 
-            // Временно определяем тип движения по контексту (спросим у пользователя)
-            // Определяем тип по знаку числа: положительное = приход, отрицательное = расход
+           
+            
             MovementType type;
             int actualQuantity;
 
@@ -318,10 +318,10 @@ namespace WarehouseApp.ViewModels
             else
             {
                 type = MovementType.Out;  // Расход
-                actualQuantity = -MovementQuantity;  // Превращаем -5 в 5
+                actualQuantity = -MovementQuantity;  
             }
 
-            // Проверка на отрицательный остаток при расходе
+          
             if (type == MovementType.Out && SelectedProduct.Quantity - actualQuantity < 0)
             {
                 ShowError($"Остаток не может стать отрицательным! Доступно: {SelectedProduct.Quantity}");
